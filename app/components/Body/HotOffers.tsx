@@ -1,5 +1,5 @@
 const HotOffers = () => {
-  return <div>asdasd</div>;
+  return <div className="hidden">asdasd</div>;
 };
 
 export default HotOffers;

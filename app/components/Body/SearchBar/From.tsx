@@ -1,20 +1,18 @@
-import { validateHeaderValue } from "http";
 import React from "react";
 
 interface DepartureInputProps {
-  value: string;
-  onChange: (value: string) => void;
+  children: React.ReactNode;
 }
 
-const From: React.FC<DepartureInputProps> = ({ value, onChange }) => {
+const From: React.FC<DepartureInputProps> = ({ children }) => {
   return (
     <div>
       <div className="text-white">
+        <div>{children}</div>
         <input
           type="text"
-          placeholder="From:"
-          className="w-full border rounded-md p-2"
-          value={value}
+          placeholder=""
+          className="w-full border rounded-md bg-sushigray border-slate-700 text-white"
         ></input>
       </div>
     </div>
