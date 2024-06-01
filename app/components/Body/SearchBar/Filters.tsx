@@ -21,7 +21,7 @@ const Filters = () => {
       key: "selection",
     },
   ]);
-  const handleChange = (ranges) => {
+  const handleChange = (ranges: any) => {
     setDateRange([ranges.selection]);
   };
 
