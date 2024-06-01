@@ -20,6 +20,7 @@ const From: React.FC<DepartureInputProps> = ({
 }) => {
   const [iconPlane, setIconPlane] = useState<any>(null);
   const [inputValue, setInputValue] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   useEffect(() => {
     if (icon === 1) {
       setIconPlane(faPlaneDeparture);

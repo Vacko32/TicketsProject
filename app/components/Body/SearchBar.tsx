@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const SearchBar = () => {
   const [airSuggestions, setAirSuggestions] = useState([]);
+  const [airSuggestions2, setAirSuggestions2] = useState([]);
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   return (
@@ -29,16 +30,20 @@ const SearchBar = () => {
           <div className="flex flex-col justify-center items-center">
             <From
               icon={2}
-              suggArraySet={setAirSuggestions}
+              suggArraySet={setAirSuggestions2}
               visibility={setVisible2}
             >
               To:
             </From>
           </div>
         </div>
-        <div>
-          <Suggestions suggestions={airSuggestions} visibility={visible} />
-          <Suggestions suggestions={airSuggestions} visibility={visible2} />
+        <div className="flex flex-row">
+          <div style={{ marginRight: "auto" }}>
+            <Suggestions suggestions={airSuggestions} visibility={visible} />
+          </div>
+          <div>
+            <Suggestions suggestions={airSuggestions2} visibility={visible2} />
+          </div>
         </div>
         <div className="flex items-center justify-center mt-5">
           <Filters />
