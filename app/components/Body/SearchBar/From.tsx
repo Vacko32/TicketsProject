@@ -1,17 +1,25 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlaneDeparture } from "@fortawesome/free-solid-svg-icons";
 import { faPlaneArrival } from "@fortawesome/free-solid-svg-icons";
+import { supabase } from "./supabaseClient";
 interface DepartureInputProps {
   children: React.ReactNode;
   icon?: number;
+  suggArraySet?: any;
+  visibility?: any;
 }
 
-const From: React.FC<DepartureInputProps> = ({ children, icon }) => {
-  const [iconPlane, setIconPlane] = React.useState<any>(null);
-
+const From: React.FC<DepartureInputProps> = ({
+  children,
+  icon,
+  suggArraySet,
+  visibility,
+}) => {
+  const [iconPlane, setIconPlane] = useState<any>(null);
+  const [inputValue, setInputValue] = useState("");
   useEffect(() => {
     if (icon === 1) {
       setIconPlane(faPlaneDeparture);
@@ -20,19 +28,40 @@ const From: React.FC<DepartureInputProps> = ({ children, icon }) => {
     }
   }, [icon]);
 
+  const handleChange = (value: string) => {
+    setInputValue(value);
+    fetchData(value);
+  };
+
+  const fetchData = async (value: string) => {
+    try {
+      const { data, error } = await supabase.from("letiste").select("*");
+      if (data === null) return;
+      const filteredData = data.filter((nazev) => {
+        return value && nazev.nazev.toLowerCase().includes(value.toLowerCase());
+      });
+      suggArraySet(filteredData);
+      console.log(filteredData);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <div>
       <div className="text-white">
         <div>{children}</div>
         <div className="w-full  bg-sushigray text-white">
           <div className="flex flex-row">
-            <div className="border-hidden mr-1">
+            <div className="border-hidden mr-1 mt-1">
               {iconPlane && <FontAwesomeIcon icon={iconPlane} />}
             </div>
             <input
               type="text"
-              placeholder=""
-              className="w-full border rounded-md bg-sushigray border-slate-700 text-white"
+              placeholder="Type to search ..."
+              value={inputValue}
+              onChange={(e) => handleChange(e.target.value)}
+              className="w-full border rounded-md bg-sushigray border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-sushipink focus:border-transparent pl-2 pr-2 pt-1 pb-1"
             ></input>
           </div>
         </div>
