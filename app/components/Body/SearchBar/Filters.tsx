@@ -5,6 +5,13 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
+interface vaiableFilters {
+  From: String;
+  To: String;
+  Depart: Date;
+  Return?: Date | undefined;
+}
+
 const Filters = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dateRange, setDateRange] = useState([
