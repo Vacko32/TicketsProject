@@ -4,7 +4,7 @@ import { faRightLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Switch = () => {
   return (
-    <div>
+    <div className="cursor-pointer text-white">
       <FontAwesomeIcon icon={faRightLeft} />
     </div>
   );
