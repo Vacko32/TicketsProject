@@ -12,7 +12,6 @@ const Filters = () => {
       startDate: new Date(),
       endDate: new Date(),
       key: "selection",
-      minDate: new Date(),
     },
   ]);
   const handleChange = (ranges) => {
@@ -22,12 +21,6 @@ const Filters = () => {
   const showCalendar = () => {
     setIsOpen(!isOpen);
   };
-  useEffect(() => {
-    const newDate = new Date();
-    newDate.setHours(newDate.getHours() + 2);
-    const todaysDate = newDate.toISOString().split("T")[0];
-    setDateRange([(dateRange[0].minDate = new Date(todaysDate))]);
-  }, [todaysDate]);
 
   return (
     <div>
