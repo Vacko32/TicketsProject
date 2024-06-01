@@ -22,20 +22,23 @@ const SearchBar = () => {
             >
               From:
             </From>
-            <Suggestions suggestions={airSuggestions} />
           </div>
           <div className="mt-7">
             <Switch />
           </div>
           <div className="flex flex-col justify-center items-center">
-            <From icon={2} suggArraySet={setAirSuggestions}>
+            <From
+              icon={2}
+              suggArraySet={setAirSuggestions}
+              visibility={setVisible2}
+            >
               To:
             </From>
-            <Suggestions
-              suggestions={airSuggestions}
-              visibility={setVisible2}
-            />
           </div>
+        </div>
+        <div>
+          <Suggestions suggestions={airSuggestions} visibility={visible} />
+          <Suggestions suggestions={airSuggestions} visibility={visible2} />
         </div>
         <div className="flex items-center justify-center mt-5">
           <Filters />
