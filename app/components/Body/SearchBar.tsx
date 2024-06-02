@@ -13,6 +13,7 @@ const SearchBar = () => {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
 
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="mt-10 text-white text-2xl">Find Your Ticket</div>
@@ -51,6 +52,7 @@ const SearchBar = () => {
                 suggestions={airSuggestions}
                 visibility={visible}
                 fromQuerySet={setFromQuery}
+                setVisibility={setVisible}
               />
             </div>
             <div>
@@ -58,6 +60,7 @@ const SearchBar = () => {
                 suggestions={airSuggestions2}
                 visibility={visible2}
                 fromQuerySet={setToQuery}
+                setVisibility={setVisible2}
               />
             </div>
           </div>

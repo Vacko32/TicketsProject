@@ -1,15 +1,18 @@
 "use client";
+import { set } from "date-fns";
 import SearchResult from "./SearchResult";
 interface SuggestionsProps {
   suggestions: any;
   visibility?: any;
   fromQuerySet: any;
+  setVisibility?: any;
 }
 
 const Suggestions: React.FC<SuggestionsProps> = ({
   suggestions,
   visibility,
   fromQuerySet,
+  setVisibility,
 }) => {
   return (
     visibility && (
@@ -20,6 +23,7 @@ const Suggestions: React.FC<SuggestionsProps> = ({
             result={suggestion.nazev}
             code={suggestion.kod_letiste}
             setValue={fromQuerySet}
+            visibility={setVisibility}
           />
         ))}
       </div>

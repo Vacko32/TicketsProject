@@ -34,7 +34,6 @@ const From: React.FC<DepartureInputProps> = ({
   }, [icon]);
 
   const handleChange = (value: string) => {
-    setInputValue(value);
     fetchData(value);
     fromSelect(value);
   };
@@ -70,7 +69,6 @@ const From: React.FC<DepartureInputProps> = ({
               onChange={(e) => handleChange(e.target.value)}
               className="w-full border rounded-md bg-sushigray border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-sushipink focus:border-transparent pl-2 pr-2 pt-1 pb-1"
               onClick={() => visibility(true)}
-              onBlur={() => visibility(false)}
             ></input>
           </div>
         </div>
