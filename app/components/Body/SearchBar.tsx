@@ -1,6 +1,8 @@
 "use client";
+import { DatePicker } from "./SearchBar/DatePicker";
 import Filters from "./SearchBar/Filters";
 import From from "./SearchBar/From";
+import SearchButton from "./SearchBar/SearchButton";
 import Suggestions from "./SearchBar/Suggestions";
 import Switch from "./SearchBar/Switch";
 import { useState } from "react";
@@ -16,8 +18,11 @@ const SearchBar = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="mt-10 text-white text-2xl">Find Your Ticket</div>
-      <div className="rounded-lg border bg-sushigray opacity-90 border-slate-700 mt-2 pt-5 pb-10 pl-2 pr-2 shadow-2xl max-h-40 relative">
+      <div className="rounded-lg border bg-sushigray opacity-90 border-slate-700 mt-2 pt-5 pb-10 pl-2 pr-2 shadow-2xl max-h-60 relative">
         <div className="flex flex-col">
+          <div className="mb-10 mt-2">
+            <DatePicker />
+          </div>
           <div className="flex flex-row gap-5 sm:gap-20 md:gap-32">
             <div className="flex flex-col justify-center items-center">
               <From
@@ -27,7 +32,7 @@ const SearchBar = () => {
                 fromSelect={setFromQuery}
                 shownValue={FromQuery}
               >
-                From: {FromQuery}
+                From:
               </From>
             </div>
             <div className="mt-7">
@@ -41,7 +46,7 @@ const SearchBar = () => {
                 fromSelect={setToQuery}
                 shownValue={ToQuery}
               >
-                To: {ToQuery}
+                To:
               </From>
             </div>
           </div>
@@ -63,6 +68,11 @@ const SearchBar = () => {
               />
             </div>
           </div>
+        </div>
+      </div>
+      <div>
+        <div className="mt-5">
+          <SearchButton />
         </div>
       </div>
     </div>
