@@ -17,7 +17,14 @@ const Switch: React.FC<SwitchProps> = ({
   setValue2,
 }) => {
   const handleClick = () => {
-    if (value1 === null || value2 === null || !setValue1 || !setValue2) {
+    if (
+      value1 === null ||
+      value2 === null ||
+      !setValue1 ||
+      !setValue2 ||
+      value1 === "" ||
+      value2 === ""
+    ) {
       return;
     }
     setValue1(value2);
