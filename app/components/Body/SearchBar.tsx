@@ -6,6 +6,11 @@ import SearchButton from "./SearchBar/SearchButton";
 import Suggestions from "./SearchBar/Suggestions";
 import Switch from "./SearchBar/Switch";
 import { useState } from "react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const SearchBar = () => {
   const [FromQuery, setFromQuery] = useState("");
@@ -24,7 +29,7 @@ const SearchBar = () => {
             <DatePicker />
           </div>
           <div className="flex flex-row gap-5 sm:gap-20 md:gap-32">
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col">
               <From
                 icon={1}
                 suggArraySet={setAirSuggestions}
@@ -32,26 +37,8 @@ const SearchBar = () => {
                 fromSelect={setFromQuery}
                 shownValue={FromQuery}
               >
-                From:
+                From: {FromQuery}
               </From>
-            </div>
-            <div className="mt-7">
-              <Switch />
-            </div>
-            <div className="flex flex-col justify-center items-center">
-              <From
-                icon={2}
-                suggArraySet={setAirSuggestions2}
-                visibility={setVisible2}
-                fromSelect={setToQuery}
-                shownValue={ToQuery}
-              >
-                To:
-              </From>
-            </div>
-          </div>
-          <div className="flex flex-row justify-between">
-            <div className="">
               <Suggestions
                 suggestions={airSuggestions}
                 visibility={visible}
@@ -59,7 +46,24 @@ const SearchBar = () => {
                 setVisibility={setVisible}
               />
             </div>
-            <div>
+            <div className="mt-7 transition-opacity border-2 rounded-full grow-0 hover:opacity-60 pl-3 pr-3 max-h-8">
+              <Switch
+                value1={FromQuery}
+                value2={ToQuery}
+                setValue1={setFromQuery}
+                setValue2={setToQuery}
+              />
+            </div>
+            <div className="flex flex-col ">
+              <From
+                icon={2}
+                suggArraySet={setAirSuggestions2}
+                visibility={setVisible2}
+                fromSelect={setToQuery}
+                shownValue={ToQuery}
+              >
+                To: {ToQuery}
+              </From>
               <Suggestions
                 suggestions={airSuggestions2}
                 visibility={visible2}
@@ -71,8 +75,10 @@ const SearchBar = () => {
         </div>
       </div>
       <div>
-        <div className="mt-5">
-          <SearchButton />
+        <div className="">
+          <div className="mt-5 shadow-xl">
+            <SearchButton />
+          </div>
         </div>
       </div>
     </div>

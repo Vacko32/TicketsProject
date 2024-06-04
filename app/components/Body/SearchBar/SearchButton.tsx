@@ -20,7 +20,10 @@ const SearchButton: React.FC<SearchButtonProps> = ({
 }) => {
   return (
     <div>
-      <Button variant="default" className="pl-5 pr-5">
+      <Button
+        variant="default"
+        className="pl-5 pr-5 hover:bg-slate-700 transition-opacity hover:opacity-60"
+      >
         <FontAwesomeIcon icon={faMagnifyingGlass} />
         Search
       </Button>
