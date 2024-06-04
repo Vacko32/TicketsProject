@@ -19,6 +19,7 @@ const SearchBar = () => {
   const [airSuggestions2, setAirSuggestions2] = useState([]);
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
+  const [date, setDate] = useState<Date>();
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -26,7 +27,7 @@ const SearchBar = () => {
       <div className="rounded-lg border bg-sushigray opacity-90 border-slate-700 mt-2 pt-5 pb-10 pl-2 pr-2 shadow-2xl max-h-60 relative">
         <div className="flex flex-col">
           <div className="mb-10 mt-2">
-            <DatePicker />
+            <DatePicker date={date} setDate={setDate} />
           </div>
           <div className="flex flex-row gap-5 sm:gap-20 md:gap-32">
             <div className="flex flex-col">
@@ -37,7 +38,7 @@ const SearchBar = () => {
                 fromSelect={setFromQuery}
                 shownValue={FromQuery}
               >
-                From: {FromQuery}
+                From: {FromQuery} a datum {date?.toDateString()}
               </From>
               <Suggestions
                 suggestions={airSuggestions}
