@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="sm:block py-3 border-slate-700 border-b-[1px] bg-sushidarkblue">
         <Container>
           <div className="flex flex-row justify-center items-center text-white">
-            <div className="fixed sm:mr-auto ml-3 sm:relative">
+            <div className="sm:mr-auto ml-3 sm:relative">
               <Logo />
             </div>
             <Collums />
