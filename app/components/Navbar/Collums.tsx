@@ -8,7 +8,7 @@ const Collums = () => {
           <NavItem>Flights</NavItem>
           <NavItem>Reviews</NavItem>
           <NavItem>About us</NavItem>
-          <NavItem>More</NavItem>
+          <NavItem>Login</NavItem>
         </div>
       </div>
     </div>
