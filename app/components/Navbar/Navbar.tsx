@@ -7,7 +7,7 @@ import Logo from "./Logo";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toogleMenu = () => {
     setIsOpen(!isOpen);
@@ -32,6 +32,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="fixed inset-0 bg-sushidarkblue z-50 ">
           <div className="flex items-start justify-end p-4 cursor-pointer text-white text-3xl border-b-2">
+            gfdg
             <FontAwesomeIcon icon={faXmark} onClick={toogleMenu} />
           </div>
         </div>
