@@ -31,9 +31,25 @@ const Navbar = () => {
       </div>
       {isOpen && (
         <div className="fixed inset-0 bg-sushidarkblue z-50 ">
-          <div className="flex items-start justify-end p-4 cursor-pointer text-white text-3xl border-b-2">
-            gfdg
-            <FontAwesomeIcon icon={faXmark} onClick={toogleMenu} />
+          <div className="flex flex-col">
+            <div className="flex items-start justify-end p-4 cursor-pointer text-white text-3xl border-b-2">
+              <div className="mr-auto">
+                <Logo />
+              </div>
+              <FontAwesomeIcon icon={faXmark} onClick={toogleMenu} />
+            </div>
+            <div className="text-white text-2xl text-center border-b border-t mt-24 pt-3 pb-3 cursor-pointer transition-opacity hover:opacity-70">
+              Flights
+            </div>
+            <div className="text-white text-2xl text-center border-b border-t mt-4 pt-3 pb-3 cursor-pointer transition-opacity hover:opacity-70">
+              Reviews
+            </div>
+            <div className="text-white text-2xl text-center border-b border-t mt-4 pt-3 pb-3 cursor-pointer transition-opacity hover:opacity-70">
+              About Us
+            </div>
+            <div className="text-white text-2xl text-center border-b border-t mt-4 pt-3 pb-3 cursor-pointer transition-opacity hover:opacity-70">
+              Login
+            </div>
           </div>
         </div>
       )}

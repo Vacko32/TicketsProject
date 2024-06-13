@@ -5,14 +5,15 @@ import From from "./SearchBar/From";
 import SearchButton from "./SearchBar/SearchButton";
 import Suggestions from "./SearchBar/Suggestions";
 import Switch from "./SearchBar/Switch";
-import { useState } from "react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import React, { useState } from "react";
+import { supabase } from "./SearchBar/supabaseClient";
 
-const SearchBar = () => {
+interface SearchbarProps {
+  tickets: any;
+  setTickets: (tickets: any) => void;
+}
+
+const SearchBar: React.FC<SearchbarProps> = ({ tickets, setTickets }) => {
   const [FromQuery, setFromQuery] = useState("");
   const [ToQuery, setToQuery] = useState("");
   const [airSuggestions, setAirSuggestions] = useState([]);
@@ -20,6 +21,38 @@ const SearchBar = () => {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [date, setDate] = useState<Date>();
+
+  const handleSearch = async () => {
+    try {
+      // Format the date to a string in 'YYYY-MM-DD' format
+      const formattedDate = date ? date.toISOString().split("T")[0] : null;
+
+      // Get the first three characters of From and To
+      const fromPrefix = FromQuery ? FromQuery.substring(0, 3) : null;
+      const toPrefix = ToQuery ? ToQuery.substring(0, 3) : null;
+
+      // Construct the query with the formatted date and prefix matching
+      let query = supabase
+        .from("let")
+        .select("*")
+        .eq("let_datum", formattedDate);
+
+      const { data, error } = await query;
+
+      if (error) {
+        console.error("error", error);
+        return;
+      }
+
+      if (data) {
+        setTickets(data);
+        console.log("data", data);
+        console.log(formattedDate);
+      }
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -77,7 +110,7 @@ const SearchBar = () => {
       </div>
       <div>
         <div className="">
-          <div className="mt-5 shadow-xl">
+          <div className="mt-5 shadow-xl" onClick={handleSearch}>
             <SearchButton />
           </div>
         </div>
