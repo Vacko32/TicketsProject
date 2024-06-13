@@ -23,36 +23,7 @@ const ResultsMap: React.FC<TicketInfo> = ({ ticketInfo }) => {
     <div>
       {ticketInfo.map((ticket, index) => (
         <div key={index} className="ticket">
-          <div>
-            <strong>Datum Zacatku:</strong> {ticket.datum_zacatku}
-          </div>
-          <div>
-            <strong>Doba Trvani:</strong> {ticket.doba_trvani}
-          </div>
-          <div>
-            <strong>ID:</strong> {ticket.id}
-          </div>
-          <div>
-            <strong>ID Letadla:</strong> {ticket.id_letadla}
-          </div>
-          <div>
-            <strong>ID Spolecnosti:</strong> {ticket.id_spolecnosti}
-          </div>
-          <div>
-            <strong>Kod Letiste Konec:</strong> {ticket.kod_letiste_konec}
-          </div>
-          <div>
-            <strong>Kod Letiste Start:</strong> {ticket.kod_letiste_start}
-          </div>
-          <div>
-            <strong>Let Cas:</strong> {ticket.let_cas}
-          </div>
-          <div>
-            <strong>Let Datum:</strong> {ticket.let_datum}
-          </div>
-          <div>
-            <strong>Nazev:</strong> {ticket.nazev}
-          </div>
+          <Results flightName={ticket.nazev} date={ticket.let_datum} />
         </div>
       ))}
     </div>
