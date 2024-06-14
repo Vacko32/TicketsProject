@@ -27,14 +27,15 @@ const SearchBar: React.FC<SearchbarProps> = ({ tickets, setTickets }) => {
       // Format the date to a string in 'YYYY-MM-DD' format
       const formattedDate = date ? date.toISOString().split("T")[0] : null;
 
-      // Get the first three characters of From and To
-      const fromPrefix = FromQuery ? FromQuery.substring(0, 3) : null;
-      const toPrefix = ToQuery ? ToQuery.substring(0, 3) : null;
-
-      // Construct the query with the formatted date and prefix matching
       let query = supabase
         .from("let")
-        .select("*")
+        .select(
+          `
+    *,
+    start_letiste:letiste!kod_letiste_start(*),
+    end_letiste:letiste!kod_letiste_konec(*)
+  `
+        )
         .eq("let_datum", formattedDate);
 
       const { data, error } = await query;

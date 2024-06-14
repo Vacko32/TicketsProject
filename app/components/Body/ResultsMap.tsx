@@ -12,6 +12,8 @@ interface Ticket {
   let_cas: string;
   let_datum: string;
   nazev: string;
+  start_letiste: any;
+  end_letiste: any;
 }
 
 interface TicketInfo {
@@ -23,7 +25,12 @@ const ResultsMap: React.FC<TicketInfo> = ({ ticketInfo }) => {
     <div>
       {ticketInfo.map((ticket, index) => (
         <div key={index} className="ticket">
-          <Results flightName={ticket.nazev} date={ticket.let_datum} />
+          <Results
+            flightName={ticket.nazev}
+            date={ticket.let_datum}
+            airportFrom={ticket.start_letiste.nazev}
+            airportTo={ticket.start_letiste.nazev}
+          />
         </div>
       ))}
     </div>
