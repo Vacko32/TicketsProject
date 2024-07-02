@@ -23,7 +23,7 @@ const Body = () => {
   const [tickets, setTickets] = React.useState<Ticket[]>([]);
   return (
     <div className="flex flex-col justify-between items-center bg-sushidarkblue">
-      <div className="border-b pb-10 w-full">
+      <div className="border-b pb-10 w-full hidden">
         <SearchBar tickets={tickets} setTickets={setTickets} />
       </div>
       <div className="mt-32">
