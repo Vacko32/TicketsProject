@@ -71,9 +71,7 @@ const SearchBar: React.FC<SearchbarProps> = ({ tickets, setTickets }) => {
                 visibility={setVisible}
                 fromSelect={setFromQuery}
                 shownValue={FromQuery}
-              >
-                From: {FromQuery} a datum {date?.toDateString()}
-              </From>
+              ></From>
               <Suggestions
                 suggestions={airSuggestions}
                 visibility={visible}
@@ -97,7 +95,7 @@ const SearchBar: React.FC<SearchbarProps> = ({ tickets, setTickets }) => {
                 fromSelect={setToQuery}
                 shownValue={ToQuery}
               >
-                To: {ToQuery}
+                
               </From>
               <Suggestions
                 suggestions={airSuggestions2}

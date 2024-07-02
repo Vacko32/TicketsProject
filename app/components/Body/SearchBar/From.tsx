@@ -6,7 +6,7 @@ import { faPlaneDeparture } from "@fortawesome/free-solid-svg-icons";
 import { faPlaneArrival } from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "./supabaseClient";
 interface DepartureInputProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   icon?: number;
   suggArraySet?: any;
   visibility?: any;
